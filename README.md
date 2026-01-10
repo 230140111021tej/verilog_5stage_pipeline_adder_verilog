@@ -1,54 +1,39 @@
-# 5-Stage Pipelined Adder in Verilog
+# 5-Stage Pipelined Adder (Verilog)
 
-This project contains a **5-stage pipelined adder** written in Verilog, along with a testbench and sample simulation results.  
-The code is designed for learning and internship demonstration purposes, and shows basic pipelining concepts suitable for beginners with some experience.
+This repository contains a simple 5-stage pipelined adder implemented in Verilog, including its testbench and supporting simulation images.  
+The project is suitable for beginners who want to learn about pipelining and simulation in digital design.
 
 ## Files
 
-- `pipe5.v` : Main Verilog module implementing a 5-stage integer adder pipeline (8-bit inputs, 9-bit output).
-- `t_pipe5.v` : Verilog testbench for simulation and verification of the `pipe5` design.
+- `Pipe.v` — Verilog module for the 5-stage pipelined adder
+- `Pipetb.v` — Testbench for `Pipe.v`
+- `RTL_schematic.png` — RTL schematic generated after synthesis
+- `Technological_schematic.png` — Technology-level schematic of the design
+- `waveform.png` — Output simulation waveform
 
-## How Pipelining Works in This Project
+## How it Works
 
-The adder is split into 5 stages, each separated by a set of registers.  
-On each clock edge, data is moved from one stage to the next:
-1. **Stage 1:** Latch inputs `a`, `b`
-2. **Stage 2:** Pass inputs along
-3. **Stage 3:** Perform addition
-4. **Stage 4:** Pass sum along
-5. **Stage 5:** Output final sum
+- The pipeline consists of 5 stages. At every clock edge, input values move through registers, with the sum computed and passed forward.
+- This pipelined approach means the output sum appears after 5 clock cycles (latency), demonstrating how pipelining can increase throughput.
 
-The result (`sum`) appears after a latency of 5 clock cycles—this models a simple pipelined datapath.
+## Usage
 
-## Simulation
+1. Add `Pipe.v` and `Pipetb.v` to your favorite simulator (Vivado, ModelSim, etc.).
+2. Set `Pipetb.v` as the simulation top.
+3. Synthesize the design for schematics, and run simulation to verify the waveform.
 
-A sample testbench (`t_pipe5.v`) applies several input pairs on each clock cycle.  
-After the pipeline fills, the output `sum` will display the correct results in order, with the expected 5-cycle delay.
+## Output Verification
 
-### Example Waveform
+See `waveform.png` for the correct simulation result.  
+- You should see sums of input pairs appearing after five clock cycles.
+- Example: if you input A=3, B=4, after the pipeline delay you’ll see the sum output as 7.
 
-| Cycle | Input A | Input B | Sum (after 5 cycles) |
-|-------|---------|---------|----------------------|
-| 1     | 7       | 9       | 16                   |
-| 2     | 12      | 24      | 36                   |
-| 3     | 31      | 1       | 32                   |
-| 4     | 15      | 11      | 26                   |
-| 5     | 3       | 4       | 7                    |
-
-> See waveform in `/images/` or simulation screenshot for verification.
-
-## Running the Simulation
-
-1. Open the project in Vivado or other Verilog simulator.
-2. Add both `pipe5.v` and `t_pipe5.v` to your project.
-3. Set `t_pipe5` as the simulation top module.
-4. Run simulation and view waveform to verify pipelined output behavior.
+Refer to `RTL_schematic.png` and `Technological_schematic.png` for block and netlist views of the synthesized circuit.
 
 ## Author
 
-- [Your Name]
-- For internship/project screening at IIT
+- Designed for internship/project review.
+- Feel free to use or modify for educational purposes.
 
 ---
-
-**Educational Use Only. For questions or improvements, feel free to open an issue or PR.**
+For questions, open an issue or contact via GitHub.
