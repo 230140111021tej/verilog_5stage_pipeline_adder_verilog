@@ -30,7 +30,8 @@ The project is suitable for beginners learning pipelining and digital simulation
 ## How it Works
 
 - The design is structured as a **5-stage pipeline**. On every clock edge, input values move forward through registers and the sum is computed.
-- Due to pipelining, the output sum appears after 5 clock cycles (latency), demonstrating increased throughput—a key concept in digital design.
+- Due to pipelining, the output sum appears after **4 clock cycles of latency** (with 5 pipeline stages), demonstrating increased throughput—a key concept in digital design.
+
 
 ---
 
@@ -47,8 +48,8 @@ The project is suitable for beginners learning pipelining and digital simulation
 **Simulation Waveform**  
 ![Simulation Waveform](waveform.png)
 
-- Sums of input pairs should appear after five clock cycles (the pipeline delay).
-- Example: input A=3, B=4. The output sum=7 appears five cycles after those values are applied.
+- Sums of input pairs appear after **4 clock cycles of latency** due to the 5-stage pipeline.
+- Example: input A=3, B=4. The output sum=7 appears **4 clock cycles after** those values are applied.
 
 **Schematic Visuals**  
 - ![RTL Schematic](RTL_schematic.png)  
